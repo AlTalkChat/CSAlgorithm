@@ -28,27 +28,27 @@ public class BOJ_18511_큰수구성하기 {
     }
 
     private static void dfs(List<Integer> kl, int [] Narr, int N, int index,int current,boolean flag){
-        if(current > N){
+        if(current > N){  // 백트래킹 현재 수보다 큰 수 나오면 끝내
             return;
         }
-        if(index == Narr.length){
-            max = Math.max(max,current);
+        if(index == Narr.length){  // 끝까지 왔다면
+            max = Math.max(max,current); // 큰 수 비교해서 처리
             return;
         }
-        if(flag == true){
+        if(flag == true){  // 주어진 자리의 수보다 작은 수가 앞자리에 왔다면
             while((current+"").length() < (N+"").length()){
                 current *= 10;
-                current += kl.get(0);
+                current += kl.get(0);  // 그 뒤는 가장 큰 수로 채워버려
             }
-            max = Math.max(max,current);
+            max = Math.max(max,current); // 그리고 큰 수 비교
             return;
         }
 
         for (int i = 0; i < kl.size(); i++) {
             if(Narr[index] > kl.get(i)){
-                dfs(kl,Narr,N,index+1,current*10+kl.get(i),true);
+                dfs(kl,Narr,N,index+1,current*10+kl.get(i),true);  // 작은 수로 채우게 되었다. flag 처리
             } else if (Narr[index] == kl.get(i)) {
-                dfs(kl,Narr,N,index+1,current*10+kl.get(i),false);
+                dfs(kl,Narr,N,index+1,current*10+kl.get(i),false); // 같은 수라 뒤에도 수를 체크해야 한다.
             }
         }
     }
@@ -56,7 +56,7 @@ public class BOJ_18511_큰수구성하기 {
         if(max == -1){ // 같은 자리수에 해당하는 수가 없을 때
             while((result+"").length() < (N+"").length()){
                 result *= 10;
-                result += kl.get(0);
+                result += kl.get(0);  // 그보다 작은 자리로 제일 큰 수로 채우자.
             }
             max = result/10;
         }
