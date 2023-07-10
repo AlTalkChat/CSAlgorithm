@@ -1,9 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.StringTokenizer;
 
 
@@ -29,15 +26,31 @@ public class BOJ_10973_다음순열 {
             return;
         }
 
-        for (int i = N-1; i >= 0; i--) {
-            if(arr[i] > arr[i-1]){  // 앞에꺼보다 뒤에꺼가 더 크면 거기가 변곡점이다.
-                // 정렬 알고리즘을 넣어야 한다. -> swap 을 활용해 보자. (2중 for문으로 활용가능할 듯)
-                for (int j = N-1; j >= 0; j--) {
-                    for (int k = N-1; k >= 0 ; k--) {
-                         b 
+        int temp = 0;
+        int index = 0;
+        int curr = 0;
+        for (int i = N-2; i >= 0; i--) {
+            if(arr[i] < arr[i+1]){  // 앞에꺼보다 뒤에꺼가 더 크면 거기가 변곡점이다.
+                temp = arr[i];  // 계속 비교해서 만들기 위함
+                curr = Integer.MAX_VALUE;
+                // 정렬 알고리즘을 넣어야 한다. -> swap 을 활용해 보자. (2중 for문으로 활용가능할 듯) 뒷쪽에 역정렬을 해야한다.
+                for (int j = N-1; j >= i+1; j--) {
+                    if(temp<arr[j]){
+                        if(curr != Math.min(curr, arr[j])){
+                            index = j;
+                            curr = arr[j];
+                        }
                     }
                 }
-
+                swap(arr,i,index);
+                for (int j = i+1; j <N-1 ; j++) {
+                    for (int k = i+1; k < N-1; k++) {
+                        if(arr[k]>arr[k+1]){
+                            swap(arr,k,k+1);
+                        }
+                    }
+                }
+                break;
             }
         }
 
