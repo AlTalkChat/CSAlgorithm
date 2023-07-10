@@ -21,7 +21,7 @@ public class BOJ_1931_회의실배정 {
 
         }
 
-//         그리디를 활용한 풀이 -> 틀림
+//         그리디를 활용한 풀이 
         Arrays.sort(times, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
