@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class BOJ_19623_회의실배정4 {
     public static void main(String[] args) throws IOException {
@@ -26,7 +24,9 @@ public class BOJ_19623_회의실배정4 {
                 }
             }
         });
-
+        Queue <Integer> que = new LinkedList<>();
+        List<Integer> list = new ArrayList<>();
+        Stack<Integer> stack = new Stack<>();
         // 계획 일단 전에 했던 전략처럼 회의를 열 수 있는 만큼 해놓고 거기서의 인원수 최대들을 계산하여 넣어보자
         
 
