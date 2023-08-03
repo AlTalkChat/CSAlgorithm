@@ -1,0 +1,103 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+public class BOJ_7562_나이트의이동 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        int mapSize = 0,curX = 0, curY = 0, goalX = 0, goalY = 0;
+        String [] readLine;
+        int [][] map;
+        NightMove nightMove = new NightMove();
+
+        for (int i = 0; i < N; i++) {
+            mapSize = Integer.parseInt(br.readLine());
+            map = new int[mapSize][mapSize];
+            readLine = br.readLine().split(" ");
+            curX = Integer.parseInt(readLine[0]);
+            curY = Integer.parseInt(readLine[1]);
+            readLine = br.readLine().split(" ");
+            goalX = Integer.parseInt(readLine[0]);
+            goalY = Integer.parseInt(readLine[1]);
+            nightMove.moveNight(map,mapSize,curX,curY,goalX,goalY);
+        }
+
+
+
+        for (int i = 0; i < N; i++) {
+            System.out.println(nightMove.result.get(i));
+        }
+    }
+}
+
+class NightMove{
+    private int[] dx = {-2,-2,2,2,1,-1,1,-1};
+    private int[] dy = {-1,1,-1,1,-2,-2,2,2};
+    private class Pos{
+        int x,y;
+        private Pos(int x ,int y){
+            this.x = x;
+            this.y = y;
+        }
+    }
+    private int GoalX,GoalY;
+    public List<Integer> result = new ArrayList<>();
+    public int lineResult;
+    public void moveNight(int [][] map, int mapSize, int curX, int curY, int goalX, int goalY){
+        GoalY = goalY;
+        GoalX = goalX;
+        if(check(curX,curY)){
+            result.add(0);
+            return;
+        }
+        lineResult = 0;
+        boolean [][] visited = new boolean[mapSize][mapSize];
+        bfs(map,curX,curY,visited);
+        result.add(lineResult);
+    }
+//    private boolean [][] makeMap (boolean [][] map,int mapSize){  // 비트로 맹글어보았다. 굳이 안해도 되지만 나이트는 무조건 이동한 후의 맵의 색이 달라진다. 유효성 한 번 더 검사 가능ㅎㅎㅎ
+//        boolean temp = false;
+//        for (int i = 0; i < mapSize; i++) {
+//            temp = !temp;
+//            for (int j = 0; j < mapSize; j++) {
+//                map[i][j] = temp ^ true;
+//                temp = !temp;
+//            }
+//        }
+//        return map;
+//    }
+
+    private void bfs(int [][] map,int curX, int  curY, boolean [][] visited){
+        Queue<Pos> queue = new LinkedList<>();
+        queue.add(new Pos(curX,curY));
+        while (!queue.isEmpty()){
+            Pos cur = queue.poll();
+            if(check(cur.x,cur.y)){
+                lineResult = map[cur.x][cur.y];
+                break;
+            }
+            for (int i = 0; i < 8; i++) {
+                int nx = cur.x + dx[i];
+                int ny = cur.y + dy[i];
+                if(nx >= 0 && nx < map.length && ny >= 0 && ny < map.length &&!visited[nx][ny]){
+                    visited[nx][ny] = true;
+                    queue.add(new Pos(nx,ny));
+                    map[nx][ny] = map[cur.x][cur.y] + 1;
+                }
+
+            }
+        }
+    }
+
+    private boolean check(int x,int y){
+        if(x == GoalX && y == GoalY){
+            return true;
+        }
+        return false;
+    }
+}

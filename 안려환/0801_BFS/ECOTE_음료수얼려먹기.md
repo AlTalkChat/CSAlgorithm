@@ -1,3 +1,9 @@
+# 후기
+기본적인 bfs 문제였다. 이제 bfs 는 알 것 같다. <br>
+크게 느꼈던 어려움은 없다.
+
+# 코드
+```
 import java.util.*;
 
 public class ECOTE_음료수얼려먹기 {
@@ -18,7 +24,7 @@ public class ECOTE_음료수얼려먹기 {
         }
         boolean [][] visited = new boolean[rowCol[0]][rowCol[1]];
         Juice juice = new Juice();
-        juice.bfs(map,visited);
+        juice.mapSeek(map,visited);
         System.out.println(juice.result);
     }
 
@@ -37,15 +43,37 @@ class Juice{
             this.y = y;
         }
     }
-    public void bfs(int [][] map,boolean[][] visited){
-        Queue<Pos> queue = new LinkedList<>();
+
+    public void mapSeek(int [][] map, boolean[][] visited){
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[0].length; j++) {
-
+                if(map[i][j] == 0){
+                    bfs(map,visited,i,j);
+                }
             }
         }
-        for (int i = 0; i < 4; i++) {
+    }
+    public void bfs(int [][] map, boolean[][] visited,int i , int j) {
+        boolean check = false;
+        Queue<Pos> queue = new LinkedList<>();
+        queue.add(new Pos(i,j));
+        visited[i][j] = true;
+        while (!queue.isEmpty()){
+            Pos cur = queue.poll();
+            for (int k = 0; k < 4; k++) {
+                int nx = cur.x + dx[k];
+                int ny = cur.y + dy[k];
 
+                if(nx>=0 && nx<map.length && ny>= 0 && ny < map[0].length && !visited[nx][ny] && map[nx][ny] == 0){
+                    visited[nx][ny] = true;
+                    queue.add(new Pos(nx,ny));
+                    check = true;
+                }
+            }
+        }
+        if(check){
+            result +=1 ;
         }
     }
 }
+```
