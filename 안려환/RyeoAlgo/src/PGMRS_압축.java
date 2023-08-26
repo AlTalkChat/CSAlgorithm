@@ -19,8 +19,8 @@ public class PGMRS_압축 {
             // 글자 2개 이상이 map 에 있다는 뜻
             if(count > 0){
                 i += count;
-                System.out.println(line);
-                answer.add(map.get(line));
+                System.out.println(line);  
+                answer.add(map.get(line));  // 수정 계획
             }else {
                 System.out.println(msg.charAt(i));
                 answer.add(map.get(Character.toString(msg.charAt(i))));
@@ -38,7 +38,7 @@ public class PGMRS_압축 {
     }
     private static int check (String msg, int idx){
         // 문자열을 보면서 map 에 있으면 계속 타고 가면서 없는거 나올 때까지 문자 합쳐가며 만들고 map 에 추가해준다.
-        // idx = i
+        // idx = i 
         int count = -1;
         line = msg.charAt(idx)+"";
         idx++;
