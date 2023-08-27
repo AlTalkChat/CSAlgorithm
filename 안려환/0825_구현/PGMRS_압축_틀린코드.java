@@ -1,5 +1,5 @@
 import java.util.*;
-public class PGMRS_압축 {
+public class PGMRS_압축_틀린코드 {
     private static String msg = "KAKAO";
 //    private static String msg = "TOBEORNOTTOBEORTOBEORNOT";
 //    private static String msg = "ABABABABABABABAB";
