@@ -18,7 +18,7 @@
 | 정원철 | 프론트엔드 고수 |
 | 지선호 | 미생            |
 
-#### 스터디훈 : -공란-
+#### 스터디훈 : 이 스터디는 안려환이 지킨다.
 
 ---
 
@@ -47,7 +47,7 @@
 
 <h4 align="center"> 안려환 </h2>
 <h5>
-    각오 : 열심히 하겠습니다.
+    각오 : 거기 누구 없소
 </h5>
 <div align="center">
  <h5>Languages & Platforms </h5>
@@ -56,12 +56,6 @@
   <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
   <img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white">
- <div>
- <h5>IDEs</h5>
- <img src="https://img.shields.io/badge/Git-F05032.svg?&style=for-the-badge&logo=Git&logoColor=white">
- <img src="https://img.shields.io/badge/Visual%20Studio%20Code-007ACC.svg?&style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white">
- <img src="https://img.shields.io/badge/Visual Studio-5C2D91?style=for-the-badge&logo=VisualStudio&logoColor=white">
-    </div>
 </div>
 
 ---
