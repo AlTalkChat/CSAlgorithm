@@ -19,6 +19,10 @@ public class BOJ_2667_단지번호붙이기 {
         }
     }
     public static void main(String[] args) throws IOException {
+        StringBuilder st = new StringBuilder();
+        st.append("asdw");
+        st.replace(2,3,"");
+        System.out.println(st);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
         map = new int[N][N];
