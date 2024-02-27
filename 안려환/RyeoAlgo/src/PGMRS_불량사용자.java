@@ -23,8 +23,4 @@ public class PGMRS_불량사용자 {
         }
 
     }
-
-    private static void dfs(){
-
-    }
 }
